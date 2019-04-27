@@ -44,27 +44,41 @@ var quotes = [
     person: 'Jesus Christ',
     citation: 'Matthew 17:20',
     year: null
+  },
+  { 
+    tags: 'humor',
+    quote: 'Why join the navy when you can be a pirate?',
+    person: 'Steve Jobs',
+    citation: null,
+    year: null
+  },
+  { 
+    tags: 'humor',
+    quote: 'Airplane travel is nature\'s way making you look like your passport photo.',
+    person: 'Al Gore',
+    citation: null,
+    year: null
   }
 ]
 
 // Function to create a random number between 0-4 (changed from 1-5 to match corresponding array indexes)
 function getRandomQuote() {
-  return Math.floor(Math.random() * 5);
+  return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
 // Function to inject HTML corresponding to Id and Class markups in index.html
 function printQuote() {
-  var random = getRandomQuote();
+  var object = getRandomQuote();
   var printToScreen = '';
   // Add a tags property (extra credit) 
-  printToScreen += '<h2 class="tags"> - ' + quotes[random].tags + '</h2>';
-  printToScreen += '<p class="quote">' + quotes[random].quote + '</p>';
-  printToScreen += '<p class="source"> ' + quotes[random].person;
-  if (quotes[random].citation != null) {
-    printToScreen += '<span class="citation">' + quotes[random].citation + '</span>';
+  printToScreen += '<h2 class="tags"> - ' + object.tags + '</h2>';
+  printToScreen += '<p class="quote">' + object.quote + '</p>';
+  printToScreen += '<p class="source"> ' + object.person;
+  if (object.citation != null) {
+    printToScreen += '<span class="citation">' + object.citation + '</span>';
   }
-  if (quotes[random].year != null) {
-    printToScreen += '<span class="year">' + quotes[random].year + '</span></p>';
+  if (object.year != null) {
+    printToScreen += '<span class="year">' + object.year + '</span></p>';
   }
   document.getElementById('quote-box').innerHTML = printToScreen; 
 }
